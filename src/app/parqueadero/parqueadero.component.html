@@ -1,0 +1,15 @@
+<h2>Vehiculos activos</h2>
+<div class="list-group">
+  <a class="list-group-item list-group-item-action active list-group-item-primary">
+    <span class="badgeHeader">Vehículo</span>
+	<span class="badgeHeader">Placa</span>
+	<span class="badgeHeader">Fecha Ingreso</span>
+  </a>
+  <a class="list-group-item list-group-item-action" *ngFor="let vehiculo of vehiculos" [class.selected]="vehiculo === selectedVehiculo" 
+		(click)="onSelect(vehiculo)">
+		<span class="badge2">{{vehiculo.tipoVehiculo}}</span>
+		<span class="badge2">{{vehiculo.placa}}</span>
+		<span class="badge2">{{vehiculo.fechaIngreso}}</span>
+  </a>
+</div>
+<app-detalle [vehiculo]="selectedVehiculo"></app-detalle>

@@ -1,0 +1,37 @@
+<div>
+	<h2>Ingresar</h2>
+	<div>
+		<label>Placa:</label>
+		<input class="form-control" [(ngModel)]="placa" #placaForm="ngModel" required  maxlength="6" style="text-transform:uppercase"
+			   pattern="^(([A-Z]|[a-z]){3}(\d{3}|\d{2}([A-Z]|[a-z])))$"/>
+		<br>
+		<label>Tipo vehiculo:</label>
+		<select class="form-control" [(ngModel)]="tipoVehiculo" #tipoForm="ngModel" required>
+			<option value="Carro">Carro</option>
+			<option value="Moto">Moto</option>
+		</select>
+		<br>
+		<div *ngIf="tipoVehiculo === 'Moto'">
+			<label>Cilindraje:</label>
+			<input class="form-control" [(ngModel)]="cilindraje"/>
+		</div>
+	</div>
+	<div>
+		<button mat-button (click)="ingresarVehiculo()" [disabled]="placaForm.invalid || tipoForm.invalid">Ingresar vehiculo</button>
+	</div>
+	
+	<div *ngIf="placaForm.invalid && (placaForm.dirty || placaForm.touched)" class="alert alert-danger">
+		  <div *ngIf="placaForm.errors.required">
+			Placa es requerida.
+		  </div>
+		  <div *ngIf="placaForm.errors.pattern">
+			Placa no valida.
+		  </div>
+	</div>
+	
+	<div *ngIf="tipoForm.invalid && (tipoForm.dirty || tipoForm.touched)" class="alert alert-danger">
+		  <div *ngIf="tipoForm.errors.required">
+			Tipo vehiculo es requerido.
+		  </div>
+	</div>
+</div>

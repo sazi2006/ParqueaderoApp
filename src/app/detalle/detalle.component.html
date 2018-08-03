@@ -1,0 +1,11 @@
+<div class="panel panel-primary" *ngIf="vehiculo">
+	<div class="panel-heading"><h2>Placa: {{ vehiculo.placa | uppercase}}</h2></div>
+	<div class="panel-body">
+		<div><span>Tipo vehiculo:</span> {{vehiculo.tipoVehiculo}}</div>
+		<div><span>Fecha ingreso:</span> {{vehiculo.fechaIngreso}}</div>
+		<div >
+			<button mat-button (click)="retirarVehiculo()">Retirar vehiculo</button>
+		</div>
+	</div>
+	<br>
+</div>
